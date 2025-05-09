@@ -6,6 +6,9 @@ const movieRouter = require('./routers/movieRouter');
 //Static asset
 app.use(express.static('public'));
 
+//Register the body-parser
+app.use(express.json());
+
 //Middleware
 const errorsHandler = require('./middleware/errorHandler.js');
 const notFound = require('./middleware/notFound.js');
