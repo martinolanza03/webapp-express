@@ -12,7 +12,6 @@ function show(req, res) {
     });
 }
 
-module.exports = {
-    index,
-    show
-};
+
+// export function
+module.exports = { index, show };
