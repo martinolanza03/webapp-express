@@ -1,7 +1,13 @@
+const connection = require('../data/db.js');
+
 //index
 function index(req, res) {
-    res.json({
-        message: 'Movie index'
+    const sql = 'SELECT * FROM movies';
+
+    // eseguiamo la query!
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Errore nel collegamento con il Database' });
+        res.json(results);
     });
 }
 
