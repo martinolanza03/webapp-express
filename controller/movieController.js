@@ -9,7 +9,7 @@ function index(req, res) {
         if (err) return res.status(500).json({ error: 'Errore nel collegamento con il Database' });
         res.json(results.map(result => ({
             ...result,
-            image: `${process.env.PUBLIC_PATH}${result.image}`
+            image: `${process.env.PUBLIC_PATH}img/${result.image}`
         })));
     });
 }
