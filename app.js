@@ -3,13 +3,15 @@ const app = express();
 const port = process.env.PORT || 3000;
 const movieRouter = require('./routers/movieRouter');
 
+//Static asset
+app.use(express.static('public'));
+
 //Middleware
 const errorsHandler = require('./middleware/errorHandler.js');
 const notFound = require('./middleware/notFound.js');
 
 //Call routes in movieRouter.js
 app.use('/movies', movieRouter);
-
 
 //Call the middleware
 //Route Not Found
