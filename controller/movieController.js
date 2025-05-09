@@ -21,8 +21,23 @@ function show(req, res) {
         if (err) return res.status(500).json({ error: 'Errore nel collegamento con il Database' });
         if (results.length === 0) return res.status(404).json({ error: 'Film non trovato' });
 
-        res.json(results[0]);
+        const movie = results[0];
+
+        //review
+
+        const sqlreview = 'SELECT text, name, vote FROM reviews WHERE movie_id = ?';
+
+        connection.query(sqlreview, [id], (err, results) => {
+            if (err) { }
+
+            movie.reviews = results;
+            res.json(movie);
+        });
     });
+
+
+
+
 }
 
 
