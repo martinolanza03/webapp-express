@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+const movieRouter = require('./routers/movieRouter');
 
-
-app.use('/movies', (req, res) => {
-    res.send('Hello World!');
-});
-
+//Call routes in movieRouter.js
+app.use('/movies', movieRouter);
 
 //Server port
 app.listen(port, () => {
