@@ -13,8 +13,15 @@ function index(req, res) {
 
 //show
 function show(req, res) {
-    res.json({
-        message: 'Movie show'
+    const { id } = req.params;
+
+    const sql = 'SELECT * FROM movies WHERE id = ?';
+
+    connection.query(sql, [id], (err, results) => {
+        if (err) return res.status(500).json({ error: 'Errore nel collegamento con il Database' });
+        if (results.length === 0) return res.status(404).json({ error: 'Film non trovato' });
+
+        res.json(results[0]);
     });
 }
 
