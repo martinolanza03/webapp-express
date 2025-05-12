@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const movieRouter = require('./routers/movieRouter');
+const cors = require('cors');
+
+//Enable CORS   
+app.use(cors({
+    origin: process.env.FE_APP
+}
+));
 
 //Static asset
 app.use(express.static('public'));
