@@ -26,7 +26,7 @@ function show(req, res) {
 
         const movie = {
             ...results[0],
-            image: `${process.env.PUBLIC_PATH}${results[0].image}`
+            image: `${process.env.PUBLIC_PATH}img/${results[0].image}`
         };
 
         //review
