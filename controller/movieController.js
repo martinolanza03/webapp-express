@@ -18,7 +18,7 @@ function index(req, res) {
 function show(req, res) {
     const { id } = req.params;
 
-    const sql = 'SELECT movies.*, ROUND(AVG(reviews.vote), 2) AS media_voto FROM movies INNER JOIN reviews ON movies.id = reviews.movie_id WHERE movie_id = ?';
+    const sql = 'SELECT movies.*, ROUND(AVG(reviews.vote), 0) AS media_voto FROM movies INNER JOIN reviews ON movies.id = reviews.movie_id WHERE movie_id = ?';
 
     connection.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: 'Errore nel collegamento con il Database' });
