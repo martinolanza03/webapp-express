@@ -8,5 +8,8 @@ router.get('/', movieController.index);
 //index, shaw element by id
 router.get('/:id', movieController.show);
 
+//create review
+router.post('/:id/reviews', movieController.createReview);
+
 
 module.exports = router;

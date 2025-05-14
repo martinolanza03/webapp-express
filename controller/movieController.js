@@ -41,11 +41,22 @@ function show(req, res) {
         });
     });
 
+}
 
+function createReview(req, res) {
+    const { id } = req.params;
+    const { name, text, vote } = req.body;
 
+    sql = 'INSERT INTO movies.reviews ( movie_id, name, text, vote) VALUES (?, ?, ?, ?)';
+    // eseguiamo la query!
+    connection.query(sql, [id, name, text, vote], (err, results) => {
+        if (err) return res.status(500).json({ error: 'Errore nel collegamento con il Database' });
+        if (results.length === 0) return res.status(404).json({ error: 'Film non trovato' });
+
+        res.status(201).json({ message: 'Recensione creata con successo' });
+    });
 
 }
 
-
 // export function
-module.exports = { index, show };
+module.exports = { index, show, createReview };
